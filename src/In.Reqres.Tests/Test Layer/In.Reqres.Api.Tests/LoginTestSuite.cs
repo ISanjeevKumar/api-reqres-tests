@@ -29,9 +29,8 @@ namespace In.Reqres.Api.Tests
             }
         }
 
-
         [Test]
-        public void Login_UserShouldGetOkStatusCodeWithInvalidValidCredentials()
+        public void Login_UserShouldGetBadRequestStatusCodeWithInvalidValidCredentials()
         {
 
             using (var client = new RequestClient("https://reqres.in"))
