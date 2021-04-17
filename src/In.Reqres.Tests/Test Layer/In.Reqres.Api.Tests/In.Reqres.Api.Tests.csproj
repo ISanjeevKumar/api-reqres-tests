@@ -60,6 +60,7 @@
     <Compile Include="LoginTestSuite.cs" />
     <Compile Include="RegisterTestSuite.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

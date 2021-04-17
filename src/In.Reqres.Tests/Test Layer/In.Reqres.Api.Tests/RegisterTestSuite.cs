@@ -7,14 +7,14 @@ using System.Net;
 namespace In.Reqres.Api.Tests
 {
     [TestFixture]
-    public class RegisterTestSuite
+    public class RegisterTestSuite : TestBase
     {
 
         [Test]
         public void Resigter_UserShouldGetOkStatusCodeWithValidData()
         {
 
-            using (var client = new RequestClient("https://reqres.in"))
+            using (var client = new RequestClient(BaseAddress))
             {
                 var data = new LoginCredentials()
                 {
@@ -32,7 +32,7 @@ namespace In.Reqres.Api.Tests
         public void Resigter_UserShouldGetTokenValueInResponseWithValidData()
         {
 
-            using (var client = new RequestClient("https://reqres.in"))
+            using (var client = new RequestClient(BaseAddress))
             {
                 var data = new LoginCredentials()
                 {
@@ -50,7 +50,7 @@ namespace In.Reqres.Api.Tests
         public void Resigter_UserShouldGetBadRequestStatusCodeWithInvalidData()
         {
 
-            using (var client = new RequestClient("https://reqres.in"))
+            using (var client = new RequestClient(BaseAddress))
             {
                 var data = new LoginCredentials()
                 {
@@ -68,7 +68,7 @@ namespace In.Reqres.Api.Tests
         public void Resigter_UserShouldGetErrorMessageWithInvalidData()
         {
 
-            using (var client = new RequestClient("https://reqres.in"))
+            using (var client = new RequestClient(BaseAddress))
             {
                 var data = new LoginCredentials()
                 {
@@ -86,7 +86,7 @@ namespace In.Reqres.Api.Tests
         public void Resigter_UserShouldNotBeAbleToRegisterWithInvalidEndPointAndValidData()
         {
 
-            using (var client = new RequestClient("https://reqres.in"))
+            using (var client = new RequestClient(BaseAddress))
             {
                 var data = new LoginCredentials()
                 {

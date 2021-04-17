@@ -14,7 +14,7 @@ namespace In.Reqres.Api.Tests
         public void Login_UserShouldGetOkStatusCodeWithValidCredentials()
         {
 
-            using (var client = new RequestClient("https://reqres.in"))
+            using (var client = new RequestClient(BaseAddress))
             {
                 var data = new LoginCredentials()
                 {
@@ -33,7 +33,7 @@ namespace In.Reqres.Api.Tests
         public void Login_UserShouldGetBadRequestStatusCodeWithInvalidValidCredentials()
         {
 
-            using (var client = new RequestClient("https://reqres.in"))
+            using (var client = new RequestClient(BaseAddress))
             {
                 var data = new LoginCredentials()
                 {
@@ -49,7 +49,7 @@ namespace In.Reqres.Api.Tests
         public void Login_UserShouldGetTokenValueWithValidCredentials()
         {
 
-            using (var client = new RequestClient("https://reqres.in"))
+            using (var client = new RequestClient(BaseAddress))
             {
                 var data = new LoginCredentials()
                 {
@@ -66,7 +66,7 @@ namespace In.Reqres.Api.Tests
         public void Login_UserShouldGetValidErrorMessageWithInvaildParameters()
         {
 
-            using (var client = new RequestClient("https://reqres.in"))
+            using (var client = new RequestClient(BaseAddress))
             {
                 var data = new LoginCredentials()
                 {
@@ -83,7 +83,7 @@ namespace In.Reqres.Api.Tests
         public void Login_UserShouldGetCookiesInResponseHeaderWithValidCredentials()
         {
 
-            using (var client = new RequestClient("https://reqres.in"))
+            using (var client = new RequestClient(BaseAddress))
             {
                 var data = new LoginCredentials()
                 {
@@ -101,7 +101,7 @@ namespace In.Reqres.Api.Tests
         public void Login_UserShouldNotBeAbleToLoginWithValidCredentialsAndInvalidEndPoints()
         {
 
-            using (var client = new RequestClient("https://reqres.in"))
+            using (var client = new RequestClient(BaseAddress))
             {
                 var data = new LoginCredentials()
                 {

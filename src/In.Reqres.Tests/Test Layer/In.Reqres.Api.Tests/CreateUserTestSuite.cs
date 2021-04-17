@@ -7,13 +7,13 @@ using System.Net;
 namespace In.Reqres.Api.Tests
 {
     [TestFixture]
-    public class CreateUserTestSuite
+    public class CreateUserTestSuite : TestBase
     {
 
         [Test]
         public void CreateUser_UserShouldGetCreatedStatusCodeWithValidData()
         {
-            using (var client = new RequestClient("https://reqres.in"))
+            using (var client = new RequestClient(BaseAddress))
             {
                 var data = new User()
                 {
@@ -31,7 +31,7 @@ namespace In.Reqres.Api.Tests
         public void CreateUser_VerifyIdIsGeneratedSuccessfullyWithValidData()
         {
 
-            using (var client = new RequestClient("https://reqres.in"))
+            using (var client = new RequestClient(BaseAddress))
             {
                 var data = new User()
                 {
