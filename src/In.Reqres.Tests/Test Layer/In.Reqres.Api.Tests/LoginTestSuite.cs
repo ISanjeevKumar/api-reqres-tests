@@ -7,11 +7,11 @@ using System.Net;
 namespace In.Reqres.Api.Tests
 {
     [TestFixture]
-    public class RegisterTests
+    public class LoginTestSuite
     {
 
         [Test]
-        public void Resigter_UserShouldGetOkStatusCodeWithValidData()
+        public void Login_UserShouldGetOkStatusCodeWithValidData()
         {
 
             using (var client = new RequestClient("https://reqres.in"))
@@ -19,7 +19,7 @@ namespace In.Reqres.Api.Tests
                 var data = new LoginCredentials()
                 {
                     Email = "eve.holt@reqres.in",
-                    Password = "pistol"
+                    Password = "cityslicka"
 
                 };
 

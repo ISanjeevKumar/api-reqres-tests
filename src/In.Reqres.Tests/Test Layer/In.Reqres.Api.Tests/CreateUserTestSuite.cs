@@ -7,7 +7,7 @@ using System.Net;
 namespace In.Reqres.Api.Tests
 {
     [TestFixture]
-    public class CreateUserTests
+    public class CreateUserTestSuite
     {
 
         [Test]
