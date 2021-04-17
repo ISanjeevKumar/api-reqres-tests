@@ -10,6 +10,11 @@ namespace In.Reqres.Api.Tests
     [Parallelizable(ParallelScope.All)]
     public class LoginTestSuite : TestBase
     {
+        protected string LoginEndPoint { get; set; }
+        public LoginTestSuite()
+        {
+            LoginEndPoint = TestContext.Parameters["LoginEndPoint"];
+        }
 
         [Test]
         public void Login_UserShouldGetOkStatusCodeWithValidCredentials()
@@ -25,7 +30,7 @@ namespace In.Reqres.Api.Tests
                 };
 
                 var response = client.Post(data,
-                                           "/api/login");
+                                          LoginEndPoint);
                 response.StatusCode.Should().Be(HttpStatusCode.OK);
             }
         }
@@ -41,7 +46,8 @@ namespace In.Reqres.Api.Tests
                     email = "eve.holt@reqres.in",
 
                 };
-                var response = client.Post(data, "/api/login");
+                var response = client.Post(data,
+                                           LoginEndPoint);
                 response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
             }
         }
@@ -58,7 +64,8 @@ namespace In.Reqres.Api.Tests
                     password = "cityslicka"
 
                 };
-                var response = client.Post<Success, LoginCredentials>(data, "/api/login");
+                var response = client.Post<Success, LoginCredentials>(data,
+                                                                      LoginEndPoint);
                 response.token.Should().NotBe(null);
             }
         }
@@ -75,7 +82,7 @@ namespace In.Reqres.Api.Tests
 
                 };
                 var response = client.Post<ErrorMessage, LoginCredentials>(data,
-                                                                           "/api/login");
+                                                                           LoginEndPoint);
                 response.error.Should().Be("Missing password");
             }
         }
@@ -93,7 +100,7 @@ namespace In.Reqres.Api.Tests
 
                 };
                 var response = client.Post(data,
-                                           "/api/login");
+                                           LoginEndPoint);
                 response.Headers.GetValues("Set-Cookie").Should().NotBeNull();
             }
         }
@@ -116,5 +123,6 @@ namespace In.Reqres.Api.Tests
                     .And.NotBe(HttpStatusCode.Created);
             }
         }
+
     }
 }

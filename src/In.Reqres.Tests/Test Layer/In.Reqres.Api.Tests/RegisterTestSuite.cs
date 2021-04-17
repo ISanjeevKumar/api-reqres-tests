@@ -10,6 +10,12 @@ namespace In.Reqres.Api.Tests
     [Parallelizable(ParallelScope.All)]
     public class RegisterTestSuite : TestBase
     {
+        protected string RegisterEndPoint { get; set; }
+
+        public RegisterTestSuite()
+        {
+            RegisterEndPoint = TestContext.Parameters["RegisterEndPoint"];
+        }
 
         [Test]
         public void Resigter_UserShouldGetOkStatusCodeWithValidData()
@@ -24,7 +30,7 @@ namespace In.Reqres.Api.Tests
 
                 };
 
-                var response = client.Post(data, "/api/register");
+                var response = client.Post(data, RegisterEndPoint);
                 response.StatusCode.Should().Be(HttpStatusCode.OK);
             }
         }
@@ -42,7 +48,7 @@ namespace In.Reqres.Api.Tests
 
                 };
 
-                var response = client.Post<Success, LoginCredentials>(data, "/api/register");
+                var response = client.Post<Success, LoginCredentials>(data, RegisterEndPoint);
                 response.token.Should().NotBeNull();
             }
         }
@@ -60,7 +66,7 @@ namespace In.Reqres.Api.Tests
 
                 };
 
-                var response = client.Post(data, "/api/register");
+                var response = client.Post(data, RegisterEndPoint);
                 response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
             }
         }
@@ -78,7 +84,7 @@ namespace In.Reqres.Api.Tests
 
                 };
 
-                var response = client.Post<ErrorMessage, LoginCredentials>(data, "/api/register");
+                var response = client.Post<ErrorMessage, LoginCredentials>(data, RegisterEndPoint);
                 response.error.Should().Be("Note: Only defined users succeed registration");
             }
         }

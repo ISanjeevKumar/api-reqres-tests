@@ -4,5 +4,8 @@
     <Parameter  name="BaseAddress" value="https://reqres.in"/>
     <!--End points-->
     <Parameter  name="CreateUserEndPoint" value="/api/users"/>
+    <Parameter  name="ListUsersEndPoint" value="/api/users?page=2"/>
+    <Parameter  name="LoginEndPoint" value="/api/login"/>
+    <Parameter  name="RegisterEndPoint" value="/api/register"/>
   </TestRunParameters>
 </RunSettings>

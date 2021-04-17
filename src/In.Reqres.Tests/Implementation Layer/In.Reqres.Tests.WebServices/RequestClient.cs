@@ -10,7 +10,7 @@ namespace In.Reqres.Tests.WebServices
         private readonly string _environmentUrl;
         private readonly string _mediaType;
 
-        public RequestClient(string environmentUrl, string mediaType = "application/json") : base()
+        public RequestClient(string environmentUrl, string mediaType = "application/json")
         {
             _environmentUrl = environmentUrl;
             _mediaType = mediaType;
@@ -34,10 +34,17 @@ namespace In.Reqres.Tests.WebServices
             return requestMessage;
         }
 
-        public HttpResponseMessage GetHttpResponseMessage(string urlParams, List<KeyValuePair<string, string>> requestHeaders = null)
+        public HttpResponseMessage Get(string urlParams, List<KeyValuePair<string, string>> requestHeaders = null)
         {
             var requestMessage = CreateRequestMessage(urlParams, HttpMethod.Get, httpContent: null, requestHeaders);
             return SendAsync(requestMessage).Result;
+        }
+
+        public TResponse Get<TResponse>(string urlParams, List<KeyValuePair<string, string>> requestHeaders = null)
+        {
+            var requestMessage = CreateRequestMessage(urlParams, HttpMethod.Get, httpContent: null, requestHeaders);
+            var response = SendAsync(requestMessage).Result;
+            return DeserializeResponse<TResponse>(response);
         }
 
         public HttpResponseMessage Post<TData>(TData data, string urlParams, List<KeyValuePair<string, string>> requestHeaders = null)
@@ -55,6 +62,7 @@ namespace In.Reqres.Tests.WebServices
             return DeserializeResponse<TResponse>(response);
         }
 
+        #region Private Methods
         private TResponse DeserializeResponse<TResponse>(object responseData)
         {
             object data = (responseData as HttpResponseMessage).Content.ReadAsStringAsync().Result;
@@ -71,6 +79,8 @@ namespace In.Reqres.Tests.WebServices
                 content = new StringContent(JsonConvert.SerializeObject(data), encoding: Encoding.UTF8, mediaType: _mediaType);
             return content;
         }
+
+        #endregion
 
     }
 }
