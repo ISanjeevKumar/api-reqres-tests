@@ -13,5 +13,5 @@ Using Visual studio IDE:
 
 Using Command lines:
 
-1. Open Developer Command Prompt to use the command-line tool, or you can find the tool in %Program Files(x86)%\Microsoft Visual Studio\<version>\<edition>\common7\ide\CommonExtensions\<Platform | Microsoft>
+1. Open Developer Command Prompt to use the command-line tool, or you can find the tool in %Program Files(x86)%\Microsoft Visual Studio\<version>\<edition>\common7\ide\CommonExtensions\<Platform | Microsoft>\TestWindow
 2. Type VSTest.Console In.Reqres.Api.Tests.dll /Settings:test.runsettings 
