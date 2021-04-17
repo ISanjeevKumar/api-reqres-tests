@@ -3,3 +3,11 @@
 ################################################################################
 
 /src/In.Reqres.Tests/.vs/In.Reqres.Tests
+/.vs
+/src/In.Reqres.Tests/packages
+/src/In.Reqres.Tests/Implementation Layer/In.Reqres.Tests.WebServices/bin/Debug
+/src/In.Reqres.Tests/Implementation Layer/In.Reqres.Tests.WebServices/obj/Debug
+/src/In.Reqres.Tests/DataModel Layer/In.Reqres.DataModel/bin/Debug
+/src/In.Reqres.Tests/DataModel Layer/In.Reqres.DataModel/obj/Debug
+/src/In.Reqres.Tests/Test Layer/In.Reqres.Api.Tests/obj/Debug
+/src/In.Reqres.Tests/Test Layer/In.Reqres.Api.Tests/bin/Debug
