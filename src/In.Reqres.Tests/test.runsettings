@@ -3,6 +3,6 @@
   <TestRunParameters>
     <Parameter  name="BaseAddress" value="https://reqres.in"/>
     <!--End points-->
-    <Parameter  name="CreateUserEndPoints" value="https://reqres.in"/>
+    <Parameter  name="CreateUserEndPoint" value="/api/users"/>
   </TestRunParameters>
 </RunSettings>

@@ -9,6 +9,12 @@ namespace In.Reqres.Api.Tests
     [TestFixture]
     public class CreateUserTestSuite : TestBase
     {
+        protected string CreateUserEndPoint { get; set; }
+
+        public CreateUserTestSuite()
+        {
+            CreateUserEndPoint = TestContext.Parameters["CreateUserEndPoint"];
+        }
 
         [Test]
         public void CreateUser_UserShouldGetCreatedStatusCodeWithValidData()
@@ -17,32 +23,53 @@ namespace In.Reqres.Api.Tests
             {
                 var data = new User()
                 {
-                    Name = "Sanjeev",
-                    Job = "Test Engineer"
+                    name = "Sanjeev",
+                    job = "Test Engineer"
 
                 };
 
-                var response = client.Post(data, "/api/users");
+                var response = client.Post(data, CreateUserEndPoint);
                 response.StatusCode.Should().Be(HttpStatusCode.Created);
             }
         }
 
         [Test]
-        public void CreateUser_VerifyIdIsGeneratedSuccessfullyWithValidData()
+        public void CreateUser_ValidateResponseDataForValidRequestData()
         {
 
             using (var client = new RequestClient(BaseAddress))
             {
                 var data = new User()
                 {
-                    Name = "Sanjeev",
-                    Job = "Test Engineer"
+                    name = "Sanjeev",
+                    job = "Test Engineer"
 
                 };
                 var response = client.Post<User, User>(data, "/api/users");
-                response.Id.Should().NotBe(null);
-
+                response.id.Should().NotBe(null);
+                response.name.Should().Be(data.name);
+                response.job.Should().Be(data.job);
             }
         }
+
+        [Test]
+        public void CreateUser_VerifyResponseHeadersAreComingAsExpected()
+        {
+
+            using (var client = new RequestClient(BaseAddress))
+            {
+                var data = new User()
+                {
+                    name = "Sanjeev",
+                    job = "Test Engineer"
+
+                };
+                var response = client.Post(data, CreateUserEndPoint);
+                response.Headers.GetValues("Server").Should().Contain("cloudflare");
+                response.Headers.GetValues("Set-Cookie").Should().NotBeNull();
+            }
+        }
+
+
     }
 }
