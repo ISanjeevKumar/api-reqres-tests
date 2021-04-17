@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace In.Reqres.DataModel
 {
-    public class LoginCredentials
+    public class ErrorMessage
     {
-        public string email { get; set; }
-        public string password { get; set; }
-
+        public string error { get; set; }
 
     }
 }

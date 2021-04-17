@@ -18,8 +18,8 @@ namespace In.Reqres.Api.Tests
             {
                 var data = new LoginCredentials()
                 {
-                    Email = "eve.holt@reqres.in",
-                    Password = "pistol"
+                    email = "eve.holt@reqres.in",
+                    password = "pistol"
 
                 };
 
