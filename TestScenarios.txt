@@ -1,1 +1,9 @@
 
+Login Scenarios:
+
+	1. Validate user should get '200' status code with valid required parameters
+	2. Validate Response Body should return token value with valid required parameters
+	3. Validate user should get '400' status code with invalid request parameters
+  4. Validate user should get valid error message in response with invalid parameters
+  5. Validate user should get cookies data in response header with valid credentials
+  6. Validate user should get error message with invalid end points and valid parameter - (it looks like a bug to me. end points with any random character is creating a resource instead of giving an error message)
