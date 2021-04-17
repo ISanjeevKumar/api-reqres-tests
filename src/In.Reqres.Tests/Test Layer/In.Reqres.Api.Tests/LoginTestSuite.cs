@@ -7,6 +7,7 @@ using System.Net;
 namespace In.Reqres.Api.Tests
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.All)]
     public class LoginTestSuite : TestBase
     {
 
@@ -57,7 +58,7 @@ namespace In.Reqres.Api.Tests
                     password = "cityslicka"
 
                 };
-                var response = client.Post<Success,LoginCredentials>(data, "/api/login");
+                var response = client.Post<Success, LoginCredentials>(data, "/api/login");
                 response.token.Should().NotBe(null);
             }
         }

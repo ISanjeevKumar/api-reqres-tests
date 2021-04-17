@@ -47,7 +47,7 @@ namespace In.Reqres.Tests.WebServices
             return SendAsync(requestMessage).Result;
         }
 
-        public TResponse Post<TResponse,TData>(TData data, string urlParams, List<KeyValuePair<string, string>> requestHeaders = null)
+        public TResponse Post<TResponse, TData>(TData data, string urlParams, List<KeyValuePair<string, string>> requestHeaders = null)
         {
             HttpContent content = SerializeRequest(data);
             var requestMessage = CreateRequestMessage(urlParams, HttpMethod.Post, httpContent: content, requestHeaders);

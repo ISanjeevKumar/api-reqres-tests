@@ -7,6 +7,7 @@ using System.Net;
 namespace In.Reqres.Api.Tests
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.All)]
     public class RegisterTestSuite : TestBase
     {
 
@@ -41,7 +42,7 @@ namespace In.Reqres.Api.Tests
 
                 };
 
-                var response = client.Post<Success,LoginCredentials>(data, "/api/register");
+                var response = client.Post<Success, LoginCredentials>(data, "/api/register");
                 response.token.Should().NotBeNull();
             }
         }

@@ -7,6 +7,7 @@ using System.Net;
 namespace In.Reqres.Api.Tests
 {
     [TestFixture]
+    [Parallelizable(ParallelScope.All)]
     public class CreateUserTestSuite : TestBase
     {
         protected string CreateUserEndPoint { get; set; }
@@ -53,7 +54,7 @@ namespace In.Reqres.Api.Tests
         }
 
         [Test]
-        public void CreateUser_VerifyResponseHeadersAreComingAsExpected()
+        public void CreateUser_ValidateResponseHeadersAreComingAsExpected()
         {
 
             using (var client = new RequestClient(BaseAddress))
@@ -70,6 +71,22 @@ namespace In.Reqres.Api.Tests
             }
         }
 
+        [Test]
+        public void CreateUser_ValidateUserShouldNotBeAbleToCreateUserWithSameExistingId()
+        {
+
+            using (var client = new RequestClient(BaseAddress))
+            {
+                var data = new User()
+                {
+                    name = "morpheus",
+                    job = "leader",
+                    id = "799"
+                };
+                var response = client.Post(data, CreateUserEndPoint);
+                response.Should().NotBe(HttpStatusCode.Created);
+            }
+        }
 
     }
 }

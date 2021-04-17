@@ -1,5 +1,4 @@
 ﻿using FluentAssertions;
-using In.Reqres.DataModel;
 using In.Reqres.Tests.WebServices;
 using NUnit.Framework;
 using System.Net;
@@ -8,6 +7,7 @@ namespace In.Reqres.Api.Tests
 {
 
     [TestFixture]
+    [Parallelizable(ParallelScope.All)]
     public class ListOfUserTestSuite : TestBase
     {
         [Test]
