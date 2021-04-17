@@ -39,6 +39,7 @@ namespace In.Reqres.Tests.WebServices
             var requestMessage = CreateRequestMessage(urlParams, HttpMethod.Get, httpContent: null, requestHeaders);
             return SendAsync(requestMessage).Result;
         }
+
         public HttpResponseMessage Post<TData>(TData data, string urlParams, List<KeyValuePair<string, string>> requestHeaders = null)
         {
             HttpContent content = SerializeRequest(data);
@@ -70,8 +71,6 @@ namespace In.Reqres.Tests.WebServices
                 content = new StringContent(JsonConvert.SerializeObject(data), encoding: Encoding.UTF8, mediaType: _mediaType);
             return content;
         }
-
-
 
     }
 }
