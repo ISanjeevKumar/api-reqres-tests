@@ -23,8 +23,44 @@ namespace In.Reqres.Api.Tests
 
                 };
 
-                var response = client.Post(data, "/api/login");
+                var response = client.Post(data, "/api/register");
                 response.StatusCode.Should().Be(HttpStatusCode.OK);
+            }
+        }
+
+        [Test]
+        public void Resigter_UserShouldGetBadRequestStatusCodeWithInvalidData()
+        {
+
+            using (var client = new RequestClient("https://reqres.in"))
+            {
+                var data = new LoginCredentials()
+                {
+                    email = "eve.holt@reqres.in",
+                    password = "InvalidPassword"
+
+                };
+
+                var response = client.Post(data, "/api/register");
+                response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+            }
+        }
+
+        [Test]
+        public void Resigter_UserShouldGetErrorMessageWithInvalidData()
+        {
+
+            using (var client = new RequestClient("https://reqres.in"))
+            {
+                var data = new LoginCredentials()
+                {
+                    email = "eve.holt@reqres.in",
+                    password = "InvalidPassword"
+
+                };
+
+                var response = client.Post<ErrorMessage, LoginCredentials>(data, "/api/register");
+                response.error.Should().Be("Missing password");
             }
         }
     }
