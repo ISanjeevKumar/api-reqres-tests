@@ -21,4 +21,4 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Test
-      run: dotnet testx --no-build --verbosity normal
+      run: dotnet test "In.Reqres.Api.Tests.dll" /Settings:"test.runsettings"
